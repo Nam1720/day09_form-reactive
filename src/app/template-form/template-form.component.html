@@ -1,0 +1,21 @@
+<div class="container">
+    <div class="col-5">
+        <form #login="ngForm" (ngSubmit)="onSubmit(login)">
+            <div class="mb-3">
+              <label for="exampleInputEmail1" class="form-label">Email address</label>
+              <input [(ngModel)]="dataExampleInputEmail1" type="email" class="form-control" id="exampleInputEmail1" name="exampleInputEmail1" aria-describedby="emailHelp">
+            </div>
+            <div class="mb-3">
+              <label for="exampleInputPassword1" class="form-label">Password</label>
+              <input [(ngModel)]="dataExampleInputPassword1" type="text" class="form-control" name="exampleInputPassword1" id="exampleInputPassword1">
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </form>
+    </div>
+
+    <div class="col-5 mt-5">
+        <div *ngFor="let newData of data, index as idx" (ondelete)="ondelete($event)">
+            {{newData.id}} - {{newData.exampleInputEmail1}} - {{newData.exampleInputPassword1}} <button (click)="onEdit(newData)" class="mr-5">Edit</button> <button (click)="ondelete(newData.id)" class="mr-5">X</button>
+        </div>
+    </div>
+</div>

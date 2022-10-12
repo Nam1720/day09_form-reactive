@@ -1,0 +1,58 @@
+<div class="container">
+    <form [formGroup]="contactForm" (submit)="onSubmit()" novalidate>
+ 
+  <p>
+    <label for="firstname">First Name </label>
+    <input formControlName="firstname" type="text" id="firstname" name="firstname">
+  </p>
+
+  <!-- <div style="color: red" *ngIf="!contactForm.controls.firstname?.valid && (contactForm.controls.firstname?.dirty || contactForm.controls.firstname?.touched)">
+    FirstName is not valid
+  </div> -->
+
+  <div style="color: red" *ngIf="!firstname?.valid && (firstname?.dirty || firstname?.touched)">
+    FirstName is not 
+    <!-- <div [hidden]="!firstname?.errors.required">âsa</div> -->
+  </div>
+ 
+  <p>
+    <label for="lastname">Last Name </label>
+    <input formControlName="lastname" type="text" id="lastname" name="lastname">
+  </p>
+
+  <div style="color: red" *ngIf="!lastname?.valid && (lastname?.dirty || lastname?.touched)">
+    lastname is not 
+    <!-- <div *ngIf="!lastname?.errors?.gte">âsa</div> -->
+  </div>
+ 
+  <p>
+    <label for="email">Email </label>
+    <input formControlName="email" type="text" id="email" name="email">
+  </p>
+ 
+  <p>
+    <label for="gender">Gender </label>
+    <input type="radio" value="male" id="gender" name="gender" formControlName="gender"> Male
+    <input type="radio" value="female" id="gender" name="gender" formControlName="gender"> Female
+  </p>
+ 
+  <p>
+    <label for="isMarried">Married </label>
+    <input formControlName="isMarried" type="checkbox" id="isMarried" name="isMarried">
+  </p>
+ 
+  <p>
+    <label for="country">country </label>
+    <select formControlName="country" formArrayName="country" id="country" name="country">
+      <option [ngValue]="c.id" *ngFor="let c of countryList">
+        {{c.value}}
+      </option>
+    </select>
+  </p>
+ 
+  <p>
+    <button type="submit" [disabled]="!contactForm.valid">Submit</button>
+  </p>
+ 
+</form>
+</div>
